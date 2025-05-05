@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食品原材料最適化アプリ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>食品原材料最適化アプリ</h1>
+        
+        <div class="card">
+            <h2>原材料入力</h2>
+            <textarea id="ingredientText" rows="5" placeholder="原材料リストを入力してください（例：きなこ（大豆を含む）（国内製造）、水飴、砂糖）"></textarea>
+        </div>
+        
+        <div class="card">
+            <h2>目標栄養成分値（100gあたり）</h2>
+            <div class="input-group">
+                <label for="targetCalories">カロリー (kcal):</label>
+                <input type="number" id="targetCalories" value="299" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="targetProtein">タンパク質 (g):</label>
+                <input type="number" id="targetProtein" value="12" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="targetFat">脂質 (g):</label>
+                <input type="number" id="targetFat" value="7.4" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="targetCarbs">炭水化物 (g):</label>
+                <input type="number" id="targetCarbs" value="46.4" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="targetSalt">食塩相当量 (g):</label>
+                <input type="number" id="targetSalt" value="0" step="0.001">
+            </div>
+            <div class="input-group">
+                <label for="totalAmount">合計重量 (g):</label>
+                <input type="number" id="totalAmount" value="100" step="1">
+            </div>
+        </div>
+        
+        <button id="analyzeBtn">分析・最適化</button>
+        
+        <div id="loadingMessage" class="hidden">分析中...<div class="loader"></div></div>
+        
+        <div id="resultsSection" class="hidden">
+            <div class="card">
+                <h2>原材料情報</h2>
+                <div id="ingredientsInfo"></div>
+            </div>
+            
+            <div class="card">
+                <h2>最適化結果</h2>
+                <div id="optimizationResults"></div>
+            </div>
+            
+            <div class="card">
+                <h2>グラフ</h2>
+                <div class="charts">
+                    <div id="proportionsChart"></div>
+                    <div id="nutritionChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
