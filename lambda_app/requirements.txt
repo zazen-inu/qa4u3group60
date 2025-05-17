@@ -1,5 +1,0 @@
-pandas==2.2.0
-openai==1.6.0
-dimod==0.12.3
-dwave-neal==0.6.0
-numpy==1.24.3
